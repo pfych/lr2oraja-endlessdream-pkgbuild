@@ -1,19 +1,21 @@
 # Maintainer: Pfych <contact at pfy dot ch>
 pkgname=lr2oraja-endlessdream
-pkgver=0.2.0
+pkgver=0.2.1
 _basever=0.8.7
 pkgrel=1
 url="https://github.com/seraxis/lr2oraja-endlessdream"
 pkgdesc="A featureful fork of beatoraja."
 arch=('x86_64')
-depends=('liberica-jre-8-full-bin' 'portaudio' 'lr2oraja')
+depends=('liberica-jre-8-full-bin' 'portaudio' 'lr2oraja' 'gtk2')
 makedepend=('unzip')
 source=(
-  "https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v${pkgver}/lr2oraja-${_basever}-endlessdream-linux-${pkgver}.zip"
+  "https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v${pkgver}/lr2oraja-${_basever}-endlessdream-linux-${pkgver}.jar"
+  "https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v0.2.0/lr2oraja-0.8.7-endlessdream-linux-0.2.0.zip"
   'lr2oraja-endlessdream.sh'
   'lr2oraja-endlessdream-icon.png'
 )
 sha256sums=(
+  '73390564fde09fd89eab9c3a34b0afbd24ee7e07ac161b43ed8184c320f71d8b' # lr2oraja-endlessdream.jar
   '1688a08ac547b891977bdf53cb80f0f458f2bce36acaa8260d273fdb16a7c677' # LR2oraja-endlessdream.zip
   'aa670db982f72e0c7cfce539bcc28888a242c386f42b032b0b9ec3c3cd3cb3c8' # lr2oraja-endlessdream.sh
   'fdbd37ff43aa6af20f9eb643bf271a77ef579014970a7a3dcecf78e65123d83d' # lr2oraja-endlessdream-icon.png
@@ -25,7 +27,7 @@ license=(
 )
 
 prepare() {
-  unzip -o "lr2oraja-${_basever}-endlessdream-linux-${pkgver}.zip"
+  unzip -o "lr2oraja-0.8.7-endlessdream-linux-0.2.0.zip" # This release contained required files
 }
 
 package() {
