@@ -1,0 +1,9 @@
+.idea
+
+# Build files
+
+lr2oraja-*.zip
+lr2oraja-*.jar
+lr2oraja-*.pkg.tar.zst
+pkg
+src

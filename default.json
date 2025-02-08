@@ -1,0 +1,29 @@
+[
+  {
+    "name":"RANDOM SELECT"
+  },
+  {
+    "name":"RANDOM UNPLAYED",
+    "filter": {
+      "playcount": 0
+    }
+  },
+  {
+    "name":"RANDOM FAILED",
+    "filter": {
+      "clear": 1
+    }
+  },
+  {
+    "name":"RANDOM <HC",
+    "filter": {
+      "clear": "<6"
+    }
+  },
+  {
+    "name":"RANDOM EASY-GROOVE",
+    "filter": {
+      "clear": ">=4 && <6"
+    }
+  }
+]
