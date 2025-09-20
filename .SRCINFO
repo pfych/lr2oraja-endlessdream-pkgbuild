@@ -1,21 +1,21 @@
 pkgbase = lr2oraja-endlessdream
 	pkgdesc = A featureful fork of beatoraja.
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/seraxis/lr2oraja-endlessdream
 	arch = x86_64
 	license = GPL3
 	license = GPL3
 	license = MIT
 	depends = lr2oraja
-	source = https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v0.2.1/lr2oraja-0.8.7-endlessdream-linux-0.2.1.jar
+	source = https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v0.3.0/lr2oraja-0.8.8-endlessdream-linux-0.3.0.jar
 	source = https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v0.2.0/lr2oraja-0.8.7-endlessdream-linux-0.2.0.zip
 	source = lr2oraja-endlessdream.sh
 	source = lr2oraja-endlessdream-icon.png
 	source = default.json
-	sha256sums = 73390564fde09fd89eab9c3a34b0afbd24ee7e07ac161b43ed8184c320f71d8b
+	sha256sums = c77719e5be5f650755297e837f8e26df998662d066334153c63e219bc03a851d
 	sha256sums = 1688a08ac547b891977bdf53cb80f0f458f2bce36acaa8260d273fdb16a7c677
-	sha256sums = a72fb162c592736a991d1680c7ac97c5662404498c0c85cce70ba1a8ff60e6b9
+	sha256sums = cd920acd9f0914d65a31d6460644225ad8ba956d57bc4f8ff8950cb400504034
 	sha256sums = fdbd37ff43aa6af20f9eb643bf271a77ef579014970a7a3dcecf78e65123d83d
 	sha256sums = f345af8667fb67a2df083c62b204cfbc92585f3bd2f856fef673046525679356
 
