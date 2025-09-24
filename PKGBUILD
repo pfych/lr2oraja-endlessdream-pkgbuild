@@ -2,7 +2,7 @@
 pkgname=lr2oraja-endlessdream
 pkgver=0.3.0
 _basever=0.8.8
-pkgrel=1
+pkgrel=2
 url="https://github.com/seraxis/lr2oraja-endlessdream"
 pkgdesc="A featureful fork of beatoraja."
 arch=('x86_64')
@@ -44,13 +44,11 @@ package() {
 
   # Move new Jar
   cp "lr2oraja-${_basever}-endlessdream-linux-${pkgver}.jar" "$pkgdir/opt/beatoraja/LR2oraja-endlessdream.jar"
-  chmod -R 777 "$pkgdir/opt/beatoraja"
 
-  # Move required font
+  # Move required files
   cp font/* "$pkgdir/opt/beatoraja/font"
-
-  # Make required files
   cp default.json "$pkgdir/opt/beatoraja/random"
+  chmod -R 777 "$pkgdir/opt/beatoraja"
 
   # Create Desktop entry
   cp lr2oraja-endlessdream-icon.png "$pkgdir/usr/share/pixmaps"
@@ -64,10 +62,6 @@ package() {
   echo "Name=LR2oraja Endless Dream" >>"$desktopEntry"
   echo "Categories=Game;" >>"$desktopEntry"
   echo "Icon=lr2oraja-endlessdream-icon" >>"$desktopEntry"
-
-  if [ -z "$XDG_CONFIG_HOME" ]; then
-    XDG_CONFIG_HOME="$HOME/.config"
-  fi
 
   # Install LR2oraja
   install -D lr2oraja-endlessdream.sh "$pkgdir/usr/bin/lr2oraja-endlessdream"

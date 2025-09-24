@@ -1,7 +1,7 @@
 pkgbase = lr2oraja-endlessdream
 	pkgdesc = A featureful fork of beatoraja.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/seraxis/lr2oraja-endlessdream
 	arch = x86_64
 	license = GPL3
