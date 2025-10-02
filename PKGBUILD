@@ -2,53 +2,57 @@
 pkgname=lr2oraja-endlessdream
 pkgver=0.3.0
 _basever=0.8.8
-pkgrel=3
+pkgrel=4
 url="https://github.com/seraxis/lr2oraja-endlessdream"
 pkgdesc="A featureful fork of beatoraja."
 arch=('x86_64')
-depends=('lr2oraja')
+depends=('liberica-jre-8-full-bin' 'portaudio')
 makedepends=('unzip')
 source=(
   "https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v${pkgver}/lr2oraja-${_basever}-endlessdream-linux-${pkgver}.jar"
-  "https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v0.2.0/lr2oraja-0.8.7-endlessdream-linux-0.2.0.zip"
+  'https://github.com/TNG-dev/tachi-beatoraja-ir/releases/download/v3.0.0/bokutachiIR-3.0.0.jar'
   'lr2oraja-endlessdream.sh'
   'lr2oraja-endlessdream-icon.png'
-  'default.json'
+  'libjportaudio.so'
 )
 sha256sums=(
   'c77719e5be5f650755297e837f8e26df998662d066334153c63e219bc03a851d' # lr2oraja-endlessdream.jar
-  '1688a08ac547b891977bdf53cb80f0f458f2bce36acaa8260d273fdb16a7c677' # lr2oraja-0.8.7-endlessdream-linux-0.2.0.zip (For Fonts)
-  'cd920acd9f0914d65a31d6460644225ad8ba956d57bc4f8ff8950cb400504034' # lr2oraja-endlessdream.sh
+  '3754959d5d6f121dbeed3a78dec2b91a26e915ff4ce68fdee4262b89ad150cb9' # bokutachiIR
+  '0c1168c66a9685348cab396acdfc7bbac6e4b851cb4a25cbb166ff9481987ea1' # lr2oraja-endlessdream.sh
   'fdbd37ff43aa6af20f9eb643bf271a77ef579014970a7a3dcecf78e65123d83d' # lr2oraja-endlessdream-icon.png
-  'f345af8667fb67a2df083c62b204cfbc92585f3bd2f856fef673046525679356' # default.json
+  'a65d1290d3ee7710f9327c040e6369bf7587eb3609835ed782caaf0ac02d84ed' # libjportaudio.so
 )
 license=(
   'GPL3'
   'GPL3'
   'MIT'
 )
+install=migrate.install
 
 prepare() {
-  # This release contained required font files
-  unzip -o "lr2oraja-0.8.7-endlessdream-linux-0.2.0.zip"
+  git clone "https://github.com/seraxis/lr2oraja-endlessdream" --depth=1 upstream
 }
 
 package() {
   # Create required directories
   cd "$srcdir/"
-  mkdir -p "$pkgdir/opt/beatoraja"
+  mkdir -p "$pkgdir/opt/lr2oraja-endlessdream"
+  mkdir -p "$pkgdir/opt/lr2oraja-endlessdream/ir"
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/usr/share/pixmaps"
-  mkdir -p "$pkgdir/opt/beatoraja/font"
-  mkdir -p "$pkgdir/opt/beatoraja/random"
 
   # Move new Jar
-  cp "lr2oraja-${_basever}-endlessdream-linux-${pkgver}.jar" "$pkgdir/opt/beatoraja/LR2oraja-endlessdream.jar"
+  cp "lr2oraja-${_basever}-endlessdream-linux-${pkgver}.jar" "$pkgdir/opt/lr2oraja-endlessdream/LR2oraja-endlessdream.jar"
 
   # Move required files
-  cp font/* "$pkgdir/opt/beatoraja/font"
-  cp default.json "$pkgdir/opt/beatoraja/random"
-  chmod -R 777 "$pkgdir/opt/beatoraja"
+  cp -r upstream/assets/* "$pkgdir/opt/lr2oraja-endlessdream"
+  cp "bokutachiIR-3.0.0.jar" "$pkgdir/opt/lr2oraja-endlessdream/ir"
+  chmod -R 777 "$pkgdir/opt/lr2oraja-endlessdream"
+  ln -sfn "/opt/lr2oraja-endlessdream" "$XDG_CONFIG_HOME/lr2oraja-endlessdream"
+
+  if ! [[ -f "/usr/lib/libjportaudio.so" ]]; then
+    cp libjportaudio.so "$pkgdir/usr/lib"
+  fi
 
   # Create Desktop entry
   cp lr2oraja-endlessdream-icon.png "$pkgdir/usr/share/pixmaps"
