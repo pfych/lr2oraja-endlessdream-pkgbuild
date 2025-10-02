@@ -2,12 +2,12 @@
 pkgname=lr2oraja-endlessdream
 pkgver=0.3.0
 _basever=0.8.8
-pkgrel=2
+pkgrel=3
 url="https://github.com/seraxis/lr2oraja-endlessdream"
 pkgdesc="A featureful fork of beatoraja."
 arch=('x86_64')
 depends=('lr2oraja')
-makedepend=('unzip')
+makedepends=('unzip')
 source=(
   "https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v${pkgver}/lr2oraja-${_basever}-endlessdream-linux-${pkgver}.jar"
   "https://github.com/seraxis/lr2oraja-endlessdream/releases/download/v0.2.0/lr2oraja-0.8.7-endlessdream-linux-0.2.0.zip"
