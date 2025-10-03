@@ -1,7 +1,7 @@
 pkgbase = lr2oraja-endlessdream
 	pkgdesc = A featureful fork of beatoraja.
 	pkgver = 0.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/seraxis/lr2oraja-endlessdream
 	install = migrate.install
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = lr2oraja-endlessdream
 	source = libjportaudio.so
 	sha256sums = c77719e5be5f650755297e837f8e26df998662d066334153c63e219bc03a851d
 	sha256sums = 3754959d5d6f121dbeed3a78dec2b91a26e915ff4ce68fdee4262b89ad150cb9
-	sha256sums = 0c1168c66a9685348cab396acdfc7bbac6e4b851cb4a25cbb166ff9481987ea1
+	sha256sums = b15d784c416bfc353005ef37e1325a7a28e6af96a82eec8ea11af586bb603002
 	sha256sums = fdbd37ff43aa6af20f9eb643bf271a77ef579014970a7a3dcecf78e65123d83d
 	sha256sums = a65d1290d3ee7710f9327c040e6369bf7587eb3609835ed782caaf0ac02d84ed
 

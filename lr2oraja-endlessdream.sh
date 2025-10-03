@@ -7,4 +7,4 @@ SHUT_UP_TACHI=yes \
   /usr/lib/jvm/liberica-jdk-17-full/bin/java \
   -Djdk.gtk.version=2 \
   -Xms1g -Xmx4g \
-  -cp LR2oraja-endlessdream.jar:ir/* bms.player.beatoraja.MainLoader
+  -cp LR2oraja-endlessdream.jar:ir/* bms.player.beatoraja.MainLoader $@
