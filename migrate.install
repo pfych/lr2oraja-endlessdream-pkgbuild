@@ -1,0 +1,70 @@
+post_upgrade() {
+  local old_dir="/opt/beatoraja"
+  local new_dir="/usr/share/lr2oraja-endlessdream"
+  local migration_marker="$old_dir/aur_endlessdream_migration_marker"
+
+  # Only proceed if old directory exists (meaning this is an upgrade)
+  if [[ -d "$old_dir" ]]; then
+    if [[ -f "$migration_marker" ]]; then
+      # This should eventually be silenced! We dont wan't this on every install!
+      echo "==> LR2oraja Migration already completed previously."
+      echo "==> Old data location: $old_dir"
+      echo "==> Current installation: $new_dir"
+      echo "==> You can safely remove $old_dir when ready:"
+      echo "    sudo rm -rf $old_dir"
+      return 0
+    fi
+
+    echo "==> Copying lr2oraja user data from existing install to new location..."
+
+    # List of user data files/folders to migrate
+    local user_items=(
+      "bgm"
+      "config.json"
+      "config_sys.json"
+      "course"
+      "defaultsound"
+      "favorite"
+      "folder"
+      "layout.ini"
+      "player"
+      "practice"
+      "rival"
+      "screenshot"
+      "songdata.db"
+      "songinfo.db"
+      "table"
+    )
+
+    local migrated_count=0
+    for item in "${user_items[@]}"; do
+      if [[ -e "$old_dir/$item" ]]; then
+        echo "  -> Migrating $item"
+        if cp -r "$old_dir/$item" "$new_dir/" 2>/dev/null; then
+          chmod -R 777 "$new_dir/$item" 2>/dev/null
+          ((migrated_count++))
+        fi
+      fi
+    done
+
+    # Handle skin directory specially (merge contents)
+    if [[ -d "$old_dir/skin" ]]; then
+      echo "  -> Merging skin directory contents"
+      if cp -r "$old_dir/skin"/* "$new_dir/skin/" 2>/dev/null; then
+        chmod -R 777 "$new_dir/skin" 2>/dev/null
+        ((migrated_count++))
+      fi
+    fi
+
+    touch "$migration_marker"
+
+    if [[ $migrated_count -gt 0 ]]; then
+      echo "==> Migration complete! $migrated_count items migrated."
+      echo "==> Your old data has been preserved in $old_dir"
+      echo "==> You can safely remove $old_dir when ready:"
+      echo "    sudo rm -rf $old_dir"
+    else
+      echo "==> No user data found to migrate."
+    fi
+  fi
+}
