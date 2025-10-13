@@ -60,9 +60,9 @@ post_upgrade() {
 
     if [[ $migrated_count -gt 0 ]]; then
       echo "==> Migration complete! $migrated_count items migrated."
+      echo "==> IPFS & http_download folders were not migrated."
       echo "==> Your old data has been preserved in $old_dir"
-      echo "==> You can safely remove $old_dir when ready:"
-      echo "    sudo rm -rf $old_dir"
+      echo "==> You can safely remove $old_dir when ready!"
     else
       echo "==> No user data found to migrate."
     fi

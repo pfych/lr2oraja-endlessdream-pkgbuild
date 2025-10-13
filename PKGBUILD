@@ -2,11 +2,11 @@
 pkgname=lr2oraja-endlessdream
 pkgver=0.3.0
 _basever=0.8.8
-pkgrel=5
+pkgrel=6
 url="https://github.com/seraxis/lr2oraja-endlessdream"
 pkgdesc="A featureful fork of beatoraja."
 arch=('x86_64')
-depends=('bash' 'liberica-jre-8-full-bin')
+depends=('bash' 'liberica-jdk-17-full-bin')
 makedepends=('unzip' 'git' 'cmake' 'gcc')
 _portaudio_java_commit="2ec5cc47d6f8abe85ddb09c34e69342bfe72c60b"
 source=(
