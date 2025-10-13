@@ -49,7 +49,7 @@ post_upgrade() {
 
     # Handle skin directory specially (merge contents)
     if [[ -d "$old_dir/skin" ]]; then
-      echo "  -> Merging skin directory contents"
+      echo "  -> Merging skin directory contents (This may take a while - It's not frozen!)"
       if cp -r "$old_dir/skin"/* "$new_dir/skin/" 2>/dev/null; then
         chmod -R 777 "$new_dir/skin" 2>/dev/null
         ((migrated_count++))
